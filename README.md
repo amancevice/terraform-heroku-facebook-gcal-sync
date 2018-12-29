@@ -4,9 +4,9 @@ Synchronize facebook page events with Google Calendar.
 
 ## Prerequisites
 
-Before beginning, you will need to create and configure a [facebook app](https://github.com/amancevice/fest/blob/master/docs/facebook.md#facebook) to acquire the access keys to use Graph API.
+Before beginning you will need to create and configure a [facebook app](https://github.com/amancevice/fest/blob/master/docs/facebook.md#facebook) and use it to acquire a page access token for Graph API.
 
-For Google, you will need to set up a [service account](https://github.com/amancevice/fest/blob/master/docs/google.md#google) for to authenticate with Google APIs.
+You will also need to set up a Google [service account](https://github.com/amancevice/fest/blob/master/docs/google.md#google) to acquire a credentials file to authenticate with Google APIs.
 
 ## Usage
 
