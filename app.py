@@ -1,7 +1,6 @@
 import json
 import logging
 import os
-from datetime import datetime
 
 import facebook
 from google.oauth2 import service_account
