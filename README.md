@@ -15,6 +15,7 @@ Collect your facebook Page access token and Google service account credentials f
 ```hcl
 module facebook_gcal_sync {
   source                  = "amancevice/facebook-gcal-sync/heroku"
+  version                 = "~> 0.2"
   app_name                = "<unique-app-name"
   facebook_page_id        = "<facebook-page-id>"
   google_calendar_id      = "<google-calendar-id>"
