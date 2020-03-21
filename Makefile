@@ -1,4 +1,4 @@
-.PHONY: default validate
+.PHONY: default clean validate
 
 default: requirements.txt requirements-dev.txt validate
 
@@ -13,6 +13,9 @@ requirements.txt: Pipfile.lock
 
 requirements-dev.txt: Pipfile.lock
 	pipenv lock -r -d > $@
+
+clean:
+	rm -rf .terraform
 
 validate: | .terraform
 	terraform validate
