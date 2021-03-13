@@ -1,23 +1,30 @@
 terraform {
-  required_version = "~> 0.12"
+  required_version = "~> 0.13"
+
+  required_providers {
+    heroku = {
+      source  = "heroku/heroku"
+      version = "~> 4.1"
+    }
+  }
 }
 
-provider heroku {
+provider "heroku" {
   email   = var.heroku_email
   api_key = var.heroku_api_key
 }
 
-resource heroku_addon scheduler {
+resource "heroku_addon" "scheduler" {
   app  = heroku_app.app.name
   plan = var.scheduler_plan
 }
 
-resource heroku_addon papertrail {
+resource "heroku_addon" "papertrail" {
   app  = heroku_app.app.name
   plan = var.papertrail_plan
 }
 
-resource heroku_app app {
+resource "heroku_app" "app" {
   name       = var.app_name
   region     = var.app_region
   stack      = var.app_stack
@@ -31,15 +38,15 @@ resource heroku_app app {
   }
 }
 
-resource heroku_app_release release {
+resource "heroku_app_release" "release" {
   app     = heroku_app.app.id
   slug_id = heroku_build.build.slug_id
 }
 
-resource heroku_build build {
+resource "heroku_build" "build" {
   app = heroku_app.app.id
 
-  source = {
+  source {
     url     = "https://github.com/amancevice/terraform-heroku-facebook-gcal-sync/archive/${var.app_version}.tar.gz"
     version = var.app_version
   }
