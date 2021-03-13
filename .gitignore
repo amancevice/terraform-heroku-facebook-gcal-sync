@@ -8,5 +8,7 @@
 # .tfvars files
 *.tfvars
 
+.venv/
 .env
+.terraform.lock.hcl
 *.json
