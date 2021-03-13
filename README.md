@@ -1,5 +1,7 @@
 # Facebook to Google Calendar Sync
 
+[![terraform](https://img.shields.io/github/v/tag/amancevice/terraform-heroku-facebook-gcal-sync?color=62f&label=version&logo=terraform&style=flat-square)](https://registry.terraform.io/modules/amancevice/serverless-pypi/aws)
+
 Synchronize facebook page events with Google Calendar.
 
 ## Prerequisites
