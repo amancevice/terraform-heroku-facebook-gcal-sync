@@ -1,3 +1,4 @@
+import base64
 import json
 import logging
 import os
@@ -8,12 +9,15 @@ from googleapiclient import discovery
 
 import fest
 
+DRYRUN = str(os.getenv('DRYRUN')).lower() in ['true', '1']
 FACEBOOK_PAGE_ID = os.environ['FACEBOOK_PAGE_ID']
 GOOGLE_CALENDAR_ID = os.environ['GOOGLE_CALENDAR_ID']
 
 # Get facebook/Google secrets
 FACEBOOK_PAGE_TOKEN = os.environ['FACEBOOK_PAGE_TOKEN']
-GOOGLE_SERVICE_ACCOUNT = json.loads(os.environ['GOOGLE_SERVICE_ACCOUNT'])
+GOOGLE_SERVICE_ACCOUNT = json.loads(
+    base64.b64decode(os.environ['GOOGLE_SERVICE_ACCOUNT']).decode()
+)
 GOOGLE_CREDENTIALS = service_account.Credentials.from_service_account_info(
     GOOGLE_SERVICE_ACCOUNT
 )
@@ -69,4 +73,4 @@ def event_time(time):
 
 
 if __name__ == '__main__':
-    print(json.loads(main()))
+    print(json.dumps(main(), indent=2, sort_keys=True))

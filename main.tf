@@ -34,7 +34,7 @@ resource "heroku_app" "app" {
     FACEBOOK_PAGE_ID       = var.facebook_page_id
     GOOGLE_CALENDAR_ID     = var.google_calendar_id
     FACEBOOK_PAGE_TOKEN    = var.facebook_page_token
-    GOOGLE_SERVICE_ACCOUNT = file(var.google_credentials_file)
+    GOOGLE_SERVICE_ACCOUNT = base64encode(file(var.google_credentials_file))
   }
 }
 

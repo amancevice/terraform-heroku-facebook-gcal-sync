@@ -12,10 +12,10 @@ You will also need to set up a Google [service account](https://github.com/amanc
 
 Collect your facebook Page access token and Google service account credentials file.
 
-```hcl
-module facebook_gcal_sync {
+```terraform
+module "facebook_gcal_sync" {
   source                  = "amancevice/facebook-gcal-sync/heroku"
-  version                 = "~> 0.2"
+  version                 = "~> 1.0"
   app_name                = "<unique-app-name"
   facebook_page_id        = "<facebook-page-id>"
   google_calendar_id      = "<google-calendar-id>"
