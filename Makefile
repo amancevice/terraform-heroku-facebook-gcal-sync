@@ -1,6 +1,6 @@
 PYTHON_VERSION := $(shell cat runtime.txt)
 
-default: requirements.txt requirements-dev.txt validate
+all: requirements.txt requirements-dev.txt validate
 
 clean:
 	rm -rf .terraform
@@ -11,7 +11,7 @@ validate: | .terraform
 shell: .env
 	docker run --rm -it --env-file .env -v $$PWD:/heroku -w /heroku python:$(PYTHON_VERSION) bash
 
-.PHONY: default clean validate shell
+.PHONY: all clean validate shell
 
 .terraform:
 	terraform init
