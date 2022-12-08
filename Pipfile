@@ -7,5 +7,9 @@ verify_ssl = true
 fest = "*"
 
 [dev-packages]
+black = "*"
 ipdb = "*"
 ipython = "*"
+
+[requires]
+python_version = "3.9"

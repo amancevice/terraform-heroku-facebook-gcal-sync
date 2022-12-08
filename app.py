@@ -4,10 +4,9 @@ import logging
 import os
 
 import facebook
+import fest
 from google.oauth2 import service_account
 from googleapiclient import discovery
-
-import fest
 
 DRYRUN = str(os.getenv("DRYRUN")).lower() in ["true", "1"]
 FACEBOOK_PAGE_ID = os.environ["FACEBOOK_PAGE_ID"]
