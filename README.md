@@ -2,6 +2,8 @@
 
 [![terraform](https://img.shields.io/github/v/tag/amancevice/terraform-heroku-facebook-gcal-sync?color=62f&label=version&logo=terraform&style=flat-square)](https://registry.terraform.io/modules/amancevice/serverless-pypi/aws)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/smallweirdnumber)
+
 Synchronize facebook page events with Google Calendar.
 
 ## Prerequisites
