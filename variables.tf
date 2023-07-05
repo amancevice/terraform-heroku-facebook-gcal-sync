@@ -39,16 +39,6 @@ variable "google_credentials_file" {
   description = "Google Service account credentials file path"
 }
 
-variable "heroku_email" {
-  description = "Heroku account email"
-  default     = null
-}
-
-variable "heroku_api_key" {
-  description = "Heroku account API key"
-  default     = null
-}
-
 variable "papertrail_plan" {
   description = "PaperTrail add on plan"
   default     = "papertrail:choklad"

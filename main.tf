@@ -4,24 +4,19 @@ terraform {
   required_providers {
     heroku = {
       source  = "heroku/heroku"
-      version = "~> 4.1"
+      version = "~> 5.2"
     }
   }
 }
 
-provider "heroku" {
-  email   = var.heroku_email
-  api_key = var.heroku_api_key
-}
-
 resource "heroku_addon" "scheduler" {
-  app  = heroku_app.app.name
-  plan = var.scheduler_plan
+  app_id = heroku_app.app.id
+  plan   = var.scheduler_plan
 }
 
 resource "heroku_addon" "papertrail" {
-  app  = heroku_app.app.name
-  plan = var.papertrail_plan
+  app_id = heroku_app.app.id
+  plan   = var.papertrail_plan
 }
 
 resource "heroku_app" "app" {
@@ -34,17 +29,17 @@ resource "heroku_app" "app" {
     FACEBOOK_PAGE_ID       = var.facebook_page_id
     GOOGLE_CALENDAR_ID     = var.google_calendar_id
     FACEBOOK_PAGE_TOKEN    = var.facebook_page_token
-    GOOGLE_SERVICE_ACCOUNT = base64encode(file(var.google_credentials_file))
+    GOOGLE_SERVICE_ACCOUNT = filebase64(var.google_credentials_file)
   }
 }
 
 resource "heroku_app_release" "release" {
-  app     = heroku_app.app.id
+  app_id  = heroku_app.app.id
   slug_id = heroku_build.build.slug_id
 }
 
 resource "heroku_build" "build" {
-  app = heroku_app.app.id
+  app_id = heroku_app.app.id
 
   source {
     url     = "https://github.com/amancevice/terraform-heroku-facebook-gcal-sync/archive/${var.app_version}.tar.gz"
