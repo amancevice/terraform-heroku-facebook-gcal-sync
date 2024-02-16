@@ -5,7 +5,7 @@ all: test build validate
 build: requirements.txt requirements-dev.txt runtime.txt
 
 clean:
-	rm -rf .terraform
+	rm -rf .terraform*
 	pipenv --rm
 
 validate: .terraform
