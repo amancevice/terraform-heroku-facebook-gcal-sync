@@ -1,8 +1,8 @@
-PYTHON_VERSION := $(shell cat runtime.txt)
+PYTHON_VERSION := $(shell pyenv local)
 
 all: test build validate
 
-build: requirements.txt requirements-dev.txt runtime.txt
+build: requirements.txt requirements-dev.txt
 
 clean:
 	rm -rf .terraform*
@@ -36,6 +36,3 @@ requirements.txt: Pipfile.lock
 
 requirements-dev.txt: Pipfile.lock
 	pipenv requirements --dev > $@
-
-runtime.txt: .python-version
-	cp $< $@
